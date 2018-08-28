@@ -1,0 +1,8 @@
+---
+title: How did you do it?
+date: 2018-08-27 22:46:14
+tags: AWS, Github, Route 53, S3, VS Code, Hexo
+---
+Maybe you're wondering where to start, hopefully my experiences help you decide.<!-- more --> I didn't see a need to maintain an EC2 instance, nor a buggy install of WordPress (and the apparent, what, 15 plugins you need to run a site) so I had to find something fast and simple and easy to use. After a bit of searching, I found Hexo and Hugo. Both do roughly the same thing, hexo uses node.js and hugo uses GO. I had a minor bit of experience with node and decided this would be the best path for the moment. After some setup with my SSH keys, repos, and some npm play I was ready to work.
+
+From here, I knew I wanted to set up a website through AWS and leverage an already owned domain name, so off to the console I went. I started by going to S3 and building a bucket with my domain name, and changed the bucket policy to public reads and static website hosting. How you go about this is on you, in a perfect world (or another week or two) i'll likely build a template with terraform building the bucket, setting policies, and i'm guessing i'll build on it as we go to include Route53 changes, and find a better way to deploy than the current AWS CLI method i'm using. I'm hoping to avoid having to use private repositories in CodeCommit and Github is free for public repos, but i'd also have to build a function in Lambda with Python to use webhooks that would build/deploy my new code once it is committed to Github. Not a fan, but we'll see what my options end up being. 
